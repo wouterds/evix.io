@@ -1,0 +1,26 @@
+version: '2.1'
+
+services:
+  nginx:
+    image: registry.digitalocean.com/evixio/web/nginx
+    container_name: io.evix-nginx
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=reverse-proxy'
+      - 'traefik.http.routers.ioevix.entrypoints=web'
+      - 'traefik.http.routers.ioevix.rule=Host(`evix.io`)'
+    restart: unless-stopped
+    mem_limit: 8mb
+    networks:
+      - default
+      - reverse-proxy
+
+  node:
+    image: registry.digitalocean.com/evixio/web/node
+    container_name: io.evix-node
+    restart: unless-stopped
+    mem_limit: 64mb
+
+networks:
+  reverse-proxy:
+    external: true

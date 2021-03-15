@@ -1,0 +1,10 @@
+.landing {
+  @apply mb-12;
+
+  & h1 {
+    @apply mt-8 mb-12;
+    @apply font-extrabold font-sans;
+    @apply text-5xl;
+    @apply p-4;
+  }
+}

@@ -1,0 +1,19 @@
+name: 'build'
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Dependencies
+      run: make node_modules
+    - name: Build
+      run: make build

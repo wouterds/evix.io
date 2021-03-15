@@ -1,0 +1,17 @@
+.header {
+  @apply border-t border-b border-dashed border-white;
+  @apply py-4;
+  @apply text-right;
+
+  @media (prefers-color-scheme: light) {
+    @apply border-tint;
+  }
+
+  & ul {
+    @apply -m-1;
+  }
+
+  & a {
+    @apply mx-1;
+  }
+}

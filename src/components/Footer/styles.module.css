@@ -1,0 +1,8 @@
+.footer {
+  @apply border-t border-dashed border-white;
+  @apply py-3;
+
+  @media (prefers-color-scheme: light) {
+    @apply border-tint;
+  }
+}

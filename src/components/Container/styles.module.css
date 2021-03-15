@@ -1,0 +1,6 @@
+.container {
+  @apply flex flex-col flex-1;
+  @apply mx-auto;
+  @apply max-w-screen-sm;
+  @apply px-6;
+}
