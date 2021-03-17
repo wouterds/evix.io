@@ -1,0 +1,36 @@
+const DigitalOcean = {
+  droplets: async () => {
+    const response = await fetch('https://api.digitalocean.com/v2/droplets', {
+      headers: {
+        Authorization: `Bearer ${process.env.DIGITALOCEAN_API_KEY}`,
+      },
+    });
+
+    const data = await response.json();
+
+    const droplets = data.droplets
+      .map((droplet) => {
+        let ip = null;
+        const name = droplet.name;
+        const status = droplet.status;
+        const region = droplet.region.slug;
+        for (const network of droplet.networks.v4) {
+          if (network.type === 'public') {
+            ip = network.ip_address;
+          }
+        }
+
+        return {
+          name,
+          status,
+          ip,
+          region,
+        };
+      })
+      .sort((a, b) => (a.name > b.name ? -1 : 1));
+
+    return droplets;
+  },
+};
+
+export default DigitalOcean;
