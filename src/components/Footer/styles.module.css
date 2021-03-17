@@ -1,6 +1,16 @@
 .footer {
   @apply border-t border-dashed border-white;
   @apply py-3;
+  @apply clear-both overflow-hidden;
+
+  & p {
+    @apply inline-block;
+  }
+
+  & nav {
+    @apply float-right;
+    @apply inline-block;
+  }
 
   @media (prefers-color-scheme: light) {
     @apply border-tint;
