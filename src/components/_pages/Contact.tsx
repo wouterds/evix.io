@@ -16,9 +16,9 @@ const ContactPage = () => {
           <p>
             <strong>Wouter De Schuyter</strong>
             <br />
-            Email: <a href="mailto:info@evix.io">info@evix.io</a>
+            email: <a href="mailto:info@evix.io">info@evix.io</a>
             <br />
-            Tel: <a href="tel:+32479228210">+32479228210</a>
+            tel: <a href="tel:+32479228210">+32479228210</a>
           </p>
         </Content>
         <Footer />
