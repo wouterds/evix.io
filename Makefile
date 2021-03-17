@@ -28,6 +28,7 @@ build: node_modules
 		node:14 yarn build
 	docker build -f ${DOCKERFILE_NODE} \
 		--build-arg NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL} \
+		--build-arg DIGITALOCEAN_API_KEY=${DIGITALOCEAN_API_KEY} \
 		-t ${TAG_NODE} .
 	docker build -f ${DOCKERFILE_NGINX} -t ${TAG_NGINX} .
 
