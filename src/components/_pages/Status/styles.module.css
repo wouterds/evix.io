@@ -1,0 +1,17 @@
+.status {
+  & ul {
+    @apply grid grid-cols-2 gap-4;
+
+    @media (max-width: 374px) {
+      @apply grid-cols-1;
+    }
+  }
+
+  & .online {
+    @apply text-green-600;
+  }
+
+  & .offline {
+    @apply text-red-600;
+  }
+}
