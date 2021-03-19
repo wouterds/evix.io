@@ -1,11 +1,11 @@
 PWD = $(shell pwd)
 
-DOCKER_REGISTRY = registry.digitalocean.com/evixio
+DOCKER_REGISTRY = registry.evix.io/evix
 DOCKER_COMPOSE = ./.docker/docker-compose.production.yml
 DOCKERFILE_NODE = ./.docker/node/Dockerfile
 DOCKERFILE_NGINX = ./.docker/nginx/Dockerfile
 
-TAG_PREFIX = ${DOCKER_REGISTRY}/web
+TAG_PREFIX = ${DOCKER_REGISTRY}/website
 TAG_NODE = ${TAG_PREFIX}/node
 TAG_NGINX = ${TAG_PREFIX}/nginx
 
@@ -33,7 +33,7 @@ build: node_modules
 	docker build -f ${DOCKERFILE_NGINX} -t ${TAG_NGINX} .
 
 docker-login:
-	docker login ${DOCKER_REGISTRY} -u ${DOCKER_REGISTRY_USER} -p ${DOCKER_REGISTRY_PASS}
+	docker login ${DOCKER_REGISTRY} -u ${DOCKER_REGISTRY_USER} -p "${DOCKER_REGISTRY_PASS}"
 
 push:
 	docker push ${TAG_NODE}

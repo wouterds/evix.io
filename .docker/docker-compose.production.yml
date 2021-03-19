@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   nginx:
-    image: registry.digitalocean.com/evixio/web/nginx
+    image: registry.evix.io/evix/website/nginx
     container_name: io.evix-nginx
     labels:
       - 'traefik.enable=true'
@@ -16,7 +16,7 @@ services:
       - reverse-proxy
 
   node:
-    image: registry.digitalocean.com/evixio/web/node
+    image: registry.evix.io/evix/website/node
     container_name: io.evix-node
     restart: unless-stopped
     mem_limit: 64mb
