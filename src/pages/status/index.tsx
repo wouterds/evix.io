@@ -3,6 +3,7 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Layout from 'components/Layout';
 import Head from 'next/head';
+import Servers from 'services/servers';
 
 import styles from './styles.module.css';
 
@@ -52,5 +53,11 @@ const StatusPage = (props: Props) => {
     </Layout>
   );
 };
+
+export const getServerSideProps = async () => ({
+  props: {
+    servers: await Servers.all,
+  },
+});
 
 export default StatusPage;
