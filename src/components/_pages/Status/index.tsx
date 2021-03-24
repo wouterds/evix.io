@@ -3,12 +3,11 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Layout from 'components/Layout';
 import Head from 'next/head';
-import DigitalOcean from 'services/digitalocean';
 
 import styles from './styles.module.css';
 
 interface Props {
-  droplets: Array<{
+  servers: Array<{
     name: string;
     ip: string;
     region: string;
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const StatusPage = (props: Props) => {
-  const { droplets } = props;
+  const { servers } = props;
 
   return (
     <Layout>
@@ -29,20 +28,20 @@ const StatusPage = (props: Props) => {
         <Content>
           <div className={styles.status}>
             <ul>
-              {droplets.map((droplet) => (
-                <li key={`droplet-${droplet.ip}`}>
-                  <strong>{droplet.name}</strong>
+              {servers.map((server) => (
+                <li key={`server-${server.ip}`}>
+                  <strong>{server.name}</strong>
                   <br />
                   status:{' '}
-                  {droplet.status === 'active' ? (
+                  {server.status === 'active' ? (
                     <span className={styles.online}>online</span>
                   ) : (
                     <span className={styles.offline}>offline</span>
                   )}
                   <br />
-                  region: {droplet.region}
+                  region: {server.region}
                   <br />
-                  ip: {droplet.ip}
+                  ip: {server.ip}
                 </li>
               ))}
             </ul>
@@ -52,16 +51,6 @@ const StatusPage = (props: Props) => {
       </Layout.Content>
     </Layout>
   );
-};
-
-export const getServerSideProps = async () => {
-  const droplets = await DigitalOcean.droplets();
-
-  return {
-    props: {
-      droplets,
-    },
-  };
 };
 
 export default StatusPage;
