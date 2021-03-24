@@ -1,14 +1,13 @@
 .footer {
   @apply border-t border-dashed border-white;
   @apply py-3;
-  @apply clear-both overflow-hidden;
+  @apply flex justify-between;
 
   & p {
     @apply inline-block;
   }
 
   & nav {
-    @apply float-right;
     @apply inline-block;
   }
 
