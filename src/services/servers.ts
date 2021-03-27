@@ -8,23 +8,25 @@ const Servers = {
       const servers = [];
 
       // non digital ocean droplets
-      const host = 'registry.evix.io';
-      const server = {
-        ip: 'n/a',
-        name: host,
-        region: 'n/a',
-        status: 'offline',
-      };
-      try {
-        const { address } = await lookup(host);
-        server.ip = address || 'n/a';
+      const hosts = ['registry.evix.io', 'nym1.evix.io'];
+      for (const host of hosts) {
+        const server = {
+          ip: 'n/a',
+          name: host,
+          region: 'n/a',
+          status: 'offline',
+        };
+        try {
+          const { address } = await lookup(host);
+          server.ip = address || 'n/a';
 
-        if (server.ip) {
-          const response = await fetch(`https://${host}`);
-          server.status = response.status === 200 ? 'active' : 'offline';
-        }
-      } catch {}
-      servers.push(server);
+          if (server.ip) {
+            const response = await fetch(`https://${host}`);
+            server.status = response.status === 200 ? 'active' : 'offline';
+          }
+        } catch {}
+        servers.push(server);
+      }
 
       // digital ocean droplets
       try {
