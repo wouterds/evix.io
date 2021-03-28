@@ -1,6 +1,10 @@
 .status {
   & ul {
-    @apply grid grid-cols-2 gap-4;
+    @apply grid grid-cols-3 gap-4;
+
+    @media (max-width: 500px) {
+      @apply grid-cols-2;
+    }
 
     @media (max-width: 374px) {
       @apply grid-cols-1;
