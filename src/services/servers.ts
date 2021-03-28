@@ -63,7 +63,11 @@ const Servers = {
         servers.push(...droplets);
       } catch {}
 
-      return servers.sort((a, b) => (a.name > b.name ? -1 : 1));
+      const collator = new Intl.Collator(undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+      return servers.sort((a, b) => collator.compare(a.name, b.name));
     })();
   },
 };
