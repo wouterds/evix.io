@@ -29,22 +29,24 @@ const StatusPage = (props: Props) => {
         <Content>
           <div className={styles.status}>
             <ul>
-              {servers.map((server) => (
-                <li key={`server-${server.ip}`}>
-                  <strong>{server.name}</strong>
-                  <br />
-                  status:{' '}
-                  {server.status === 'active' ? (
-                    <span className={styles.online}>online</span>
-                  ) : (
-                    <span className={styles.offline}>offline</span>
-                  )}
-                  <br />
-                  region: {server.region}
-                  <br />
-                  ip: {server.ip}
-                </li>
-              ))}
+              {servers
+                .filter((server) => server.name.indexOf('nym') === -1)
+                .map((server) => (
+                  <li key={`server-${server.ip}`}>
+                    <strong>{server.name}</strong>
+                    <br />
+                    status:{' '}
+                    {server.status === 'active' ? (
+                      <span className={styles.online}>online</span>
+                    ) : (
+                      <span className={styles.offline}>offline</span>
+                    )}
+                    <br />
+                    region: {server.region}
+                    <br />
+                    ip: {server.ip}
+                  </li>
+                ))}
             </ul>
           </div>
         </Content>
