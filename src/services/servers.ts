@@ -8,7 +8,12 @@ const Servers = {
       const servers = [];
 
       // non digital ocean droplets
-      const hosts = ['registry.evix.io', 'static.evix.io', 'nym1.evix.io'];
+      const hosts = [
+        'registry.evix.io',
+        'raspberrypi.evix.io',
+        'static.evix.io',
+        'nym1.evix.io',
+      ];
       for (const host of hosts) {
         const server = {
           ip: 'n/a',
