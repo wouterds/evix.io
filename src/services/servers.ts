@@ -18,7 +18,7 @@ const Servers = {
         const server = {
           ip: 'n/a',
           name: host,
-          region: 'n/a',
+          region: 'BE9000',
           status: 'offline',
         };
         try {
