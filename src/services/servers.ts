@@ -50,7 +50,7 @@ const Servers = {
           let ip = null;
           const name = droplet.name;
           const status = droplet.status;
-          const region = droplet.region.slug;
+          const region = droplet.region.slug.toUpperCase();
           for (const network of droplet.networks.v4) {
             if (network.type === 'public') {
               ip = network.ip_address;
