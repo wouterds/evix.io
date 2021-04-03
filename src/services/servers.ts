@@ -31,7 +31,7 @@ const Servers = {
       // digital ocean droplets
       try {
         const response = await fetch(
-          'https://api.digitalocean.com/v2/droplets',
+          'https://api.digitalocean.com/v2/droplets?per_page=100',
           {
             headers: {
               Authorization: `Bearer ${process.env.DIGITALOCEAN_API_KEY}`,
