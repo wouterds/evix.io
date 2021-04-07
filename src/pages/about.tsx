@@ -37,28 +37,6 @@ const AboutPage = () => {
             <br />
             Belgium
           </p>
-          <br />
-          <p>
-            <strong>Socials</strong>
-            <br />
-            Twitter:{' '}
-            <a
-              href="https://twitter.com/evix_io"
-              target="_blank"
-              rel="noreferrer"
-            >
-              https://twitter.com/evix_io
-            </a>
-            <br />
-            GitHub:{' '}
-            <a
-              href="https://github.com/evixio"
-              target="_blank"
-              rel="noreferrer"
-            >
-              https://github.com/evixio
-            </a>
-          </p>
         </Content>
         <Footer />
       </Layout.Content>
