@@ -35,7 +35,7 @@ const AboutPage = () => {
             <br />
             9000 Gent
             <br />
-            Belgium
+            België
           </p>
         </Content>
         <Footer />
