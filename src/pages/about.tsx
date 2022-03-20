@@ -31,7 +31,7 @@ const AboutPage = () => {
           <p>
             <strong>Address</strong>
             <br />
-            Twaalfkameren 94/101
+            Ingelandgat 37B
             <br />
             9000 Gent
             <br />
