@@ -1,12 +1,14 @@
 import { cssBundleHref } from '@remix-run/css-bundle';
 import type { LinksFunction } from '@remix-run/node';
 import {
+  isRouteErrorResponse,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from '@remix-run/react';
 
 import Header from '~/components/Header';
@@ -36,6 +38,34 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  return (
+    <html>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div className="max-w-xl mx-auto mt-4">
+          <Header />
+          <main className="my-8 mb-16">
+            <h1>
+              {isRouteErrorResponse(error)
+                ? `${error.status} ${error.statusText}`
+                : error instanceof Error
+                  ? error.message
+                  : 'Unknown Error'}
+            </h1>
+          </main>
+        </div>
+        <Scripts />
       </body>
     </html>
   );

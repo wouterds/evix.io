@@ -11,3 +11,7 @@ body {
   @apply font-mono text-xs;
   @apply p-4;
 }
+
+h1 {
+  @apply text-2xl font-bold;
+}
