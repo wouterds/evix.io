@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 
+import Header from '~/components/Header';
 import stylesheet from '~/styles/global.css';
 
 export const links: LinksFunction = () => [
@@ -26,7 +27,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="max-w-xl mx-auto mt-4">
+          <Header />
+          <main className="my-8">
+            <Outlet />
+          </main>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
