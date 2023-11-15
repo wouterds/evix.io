@@ -11,6 +11,7 @@ import {
   useRouteError,
 } from '@remix-run/react';
 
+import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 import stylesheet from '~/styles/global.css';
 
@@ -34,6 +35,7 @@ export default function App() {
           <main className="my-8">
             <Outlet />
           </main>
+          <Footer />
         </div>
         <ScrollRestoration />
         <Scripts />
@@ -64,6 +66,7 @@ export function ErrorBoundary() {
                   : 'Unknown Error'}
             </h1>
           </main>
+          <Footer />
         </div>
         <Scripts />
       </body>
