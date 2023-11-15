@@ -29,7 +29,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="max-w-xl mx-auto mt-4">
+        <div className="max-w-xl mx-auto mt-2">
           <Header />
           <main className="my-8">
             <Outlet />
@@ -53,7 +53,7 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <div className="max-w-xl mx-auto mt-4">
+        <div className="max-w-xl mx-auto mt-2">
           <Header />
           <main className="my-8 mb-16">
             <h1>
