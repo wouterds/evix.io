@@ -32,7 +32,7 @@ export default function App() {
       <body>
         <div className="max-w-xl mx-auto mt-2">
           <Header />
-          <main className="my-8">
+          <main className="my-12">
             <Outlet />
           </main>
           <Footer />
@@ -57,7 +57,7 @@ export function ErrorBoundary() {
       <body>
         <div className="max-w-xl mx-auto mt-2">
           <Header />
-          <main className="my-8 mb-16">
+          <main className="my-12 mb-16">
             <h1>
               {isRouteErrorResponse(error)
                 ? `${error.status} ${error.statusText}`
