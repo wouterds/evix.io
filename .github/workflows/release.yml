@@ -20,11 +20,11 @@ jobs:
       REGISTRY_PASS: ${{ secrets.GITHUB_TOKEN }}
       IMAGE_NAME: ${{ github.repository }}
       COMMIT_HASH: ${{ github.sha }}
+      VERSION: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@v4
       - run: |
           echo "BUILD_TIMESTAMP=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
-          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: docker/metadata-action@v4
         id: meta
         with:
