@@ -2,6 +2,7 @@ version: '2.1'
 
 services:
   node:
+    container_name: io.evix
     image: ghcr.io/wouterds/evix.io
     restart: unless-stopped
     mem_limit: 128mb
