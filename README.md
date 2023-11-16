@@ -1,50 +1,38 @@
-# @evix/web
+# Welcome to Remix!
 
-![code-review](https://github.com/evixio/web/workflows/code-review/badge.svg?branch=main)
-![build](https://github.com/evixio/web/workflows/build/badge.svg?branch=main)
-![production](https://github.com/evixio/web/workflows/production/badge.svg?branch=main)
+- [Remix Docs](https://remix.run/docs)
 
 ## Development
 
-```bash
-# switch node version
-nvm install
+From your terminal:
 
-# install dependencies
-yarn
-
-# create env defaults
-cp .env.example .env
-
-# start development environment
-yarn dev
+```sh
+npm run dev
 ```
 
-### VSCode
+This starts your app in development mode, rebuilding assets on file changes.
 
-#### Plugins
+## Deployment
 
-- https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-- https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
-- https://marketplace.visualstudio.com/items?itemName=cpylua.language-postcss
+First, build your app for production:
 
-#### Workspace settings
-
-```javascript
-{
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json",
-  ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true,
-  },
-  "files.associations": {
-    "*.css": "postcss",
-  },
-}
+```sh
+npm run build
 ```
+
+Then run the app in production mode:
+
+```sh
+npm start
+```
+
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `remix build`
+
+- `build/`
+- `public/build/`

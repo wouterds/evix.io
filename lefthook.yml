@@ -1,0 +1,17 @@
+post-merge:
+  parallel: true
+  commands:
+    dependencies:
+      run: yarn --frozen-lockfile
+
+post-checkout:
+  parallel: true
+  commands:
+    dependencies:
+      run: yarn --frozen-lockfile
+
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: yarn commitlint --edit

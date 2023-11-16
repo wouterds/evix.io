@@ -1,7 +1,0 @@
-.content {
-  @apply my-12;
-
-  & a {
-    @apply -mx-0.5;
-  }
-}

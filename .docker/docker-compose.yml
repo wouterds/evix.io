@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  node:
+    image: ghcr.io/wouterds/evix.io
+    restart: unless-stopped
+    mem_limit: 128mb
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.devtimefoldapp-http.rule=Host(`evix.io`)"
+      - "traefik.http.routers.devtimefoldapp-http.entrypoints=web"
+    networks:
+      - reverse-proxy
+    env_file:
+      - .env
+
+networks:
+  reverse-proxy:
+    external: true

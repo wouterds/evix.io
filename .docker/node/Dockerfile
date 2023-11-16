@@ -1,29 +1,38 @@
-FROM node:14-alpine
+FROM node:18-alpine AS dependencies
 WORKDIR /code
 
 COPY ./package.json ./package.json
 COPY ./yarn.lock ./yarn.lock
-COPY ./.next ./.next
-COPY ./public ./public
 
-RUN yarn install --production --pure-lockfile
+RUN yarn --frozen-lockfile --production
 
-FROM node:14-alpine
+FROM node:18-alpine AS build
 WORKDIR /code
 
-ARG NEXT_PUBLIC_APP_URL
-ARG DIGITALOCEAN_API_KEY
+COPY . .
+COPY --from=dependencies /code/node_modules ./node_modules
 
-ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
-ENV DIGITALOCEAN_API_KEY=$DIGITALOCEAN_API_KEY
-ENV NODE_ENV=production
+RUN yarn --frozen-lockfile
+RUN yarn build
 
-HEALTHCHECK CMD curl --fail http://localhost:3000/api/ping || exit 1
+FROM node:18-alpine AS production
+WORKDIR /code
+
+ENV PORT 3000
+EXPOSE $PORT
+
+ARG VERSION
+ARG COMMIT_SHA
+ARG BUILD_TIMESTAMP
+
+ENV VERSION=$VERSION
+ENV COMMIT_SHA=$COMMIT_SHA
+ENV BUILD_TIMESTAMP=$BUILD_TIMESTAMP
+
+COPY --from=dependencies /code/node_modules ./node_modules
+COPY --from=build /code/build /code/build
+COPY --from=build /code/public /code/public
+COPY ./package.json ./package.json
+COPY ./remix.config.js ./remix.config.js
 
 CMD ["yarn", "start"]
-
-EXPOSE 3000
-
-COPY --from=0 /code /code
-
-RUN apk add --no-cache curl
