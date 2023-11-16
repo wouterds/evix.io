@@ -1,38 +1,14 @@
-# Welcome to Remix!
+# @wouterds/evixio
 
-- [Remix Docs](https://remix.run/docs)
+[![code-review](https://github.com/wouterds/evix.io/workflows/code-review/badge.svg)](https://github.com/wouterds/evix.io/actions/workflows/code-review.yml)
+[![release](https://github.com/wouterds/evix.io/workflows/release/badge.svg)](https://github.com/wouterds/evix.io/actions/workflows/release.yml)
 
 ## Development
 
-From your terminal:
-
-```sh
-npm run dev
 ```
+# install dependencies
+yarn
 
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+# run dev server
+yarn dev
 ```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
