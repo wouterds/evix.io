@@ -19,7 +19,7 @@ jobs:
       REGISTRY_USER: ${{ github.actor }}
       REGISTRY_PASS: ${{ secrets.GITHUB_TOKEN }}
       IMAGE_NAME: ${{ github.repository }}
-      BUILD_VERSION: ${{ github.ref#refs/*/ }}
+      BUILD_VERSION: ${{ github.ref }}
       COMMIT_HASH: ${{ github.sha }}
       BUILD_TIMESTAMP: $(date +%s)
     steps:
