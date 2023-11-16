@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 html {
-  @apply bg-zinc-50 dark:bg-zinc-900;
-  @apply text-zinc-900 dark:text-zinc-100;
+  @apply bg-white dark:bg-zinc-900;
+  @apply text-black dark:text-white;
 }
 
 body {
@@ -18,6 +18,6 @@ h1 {
 
 a {
   @apply inline-block px-0.5;
-  @apply hover:text-zinc-100 hover:bg-zinc-900;
-  @apply dark:hover:bg-zinc-100 dark:hover:text-zinc-900;
+  @apply hover:text-white hover:bg-zinc-900;
+  @apply dark:hover:bg-white dark:hover:text-black;
 }
