@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const time = 100;
+const time = 125;
 const characters = ['|', '/', '-', '\\'];
 
 const TextSpinner = () => {

@@ -1,9 +1,9 @@
-import { defer, type MetaFunction } from '@remix-run/node';
-import { Await, useLoaderData } from '@remix-run/react';
-import { Suspense } from 'react';
+import type { MetaFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { useEffect, useRef, useState } from 'react';
 
 import TextSpinner from '~/components/Spinner';
-import { Servers } from '~/services/servers';
+import { Servers } from '~/services/servers.server';
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,18 +16,53 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  return defer({
-    servers: Servers.list.map((server) => {
-      return {
-        ...server,
-        synced: Servers.update(server.host),
-      };
-    }),
-  });
+  return {
+    servers: Servers.list,
+  };
 };
 
-const Contact = () => {
-  const { servers } = useLoaderData<typeof loader>();
+const Status = () => {
+  const data = useLoaderData<typeof loader>();
+  const [servers, setServers] = useState(
+    data.servers.map((server) => ({
+      ...server,
+      loading: true,
+    })),
+  );
+
+  const fetching = useRef(false);
+  useEffect(() => {
+    if (fetching.current) {
+      return;
+    }
+
+    fetching.current = true;
+
+    (async () => {
+      for (const { host } of data.servers) {
+        console.log('fetch', host);
+        const response = await fetch(`/status/${host}`);
+        const data = await response.json();
+
+        setServers((servers) => {
+          const index = servers.findIndex((server) => server.host === host);
+          if (index === -1) {
+            return servers;
+          }
+
+          return [
+            ...servers.slice(0, index),
+            {
+              ...servers[index],
+              ...data,
+              loading: false,
+            },
+            ...servers.slice(index + 1),
+          ];
+        });
+      }
+    })();
+  }, [data.servers]);
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-between">
@@ -36,28 +71,22 @@ const Contact = () => {
           <strong>{server.host}</strong>
           <br />
           status:{' '}
-          <Suspense fallback={<TextSpinner />}>
-            <Await resolve={server.synced}>
-              {server.online ? (
-                <span className="text-green-600 dark:text-green-500">
-                  online
-                </span>
-              ) : (
-                <span className="text-red-600 dark:text-red-500">offline</span>
-              )}
-            </Await>
-          </Suspense>
+          {server.loading ? (
+            <TextSpinner />
+          ) : server.online ? (
+            <span className="text-green-600 dark:text-green-500">online</span>
+          ) : (
+            <span className="text-red-600 dark:text-red-500">offline</span>
+          )}
           <br />
           region: {server.region}
           <br />
           ip:{' '}
-          <Suspense fallback={server.ip || <TextSpinner />}>
-            <Await resolve={server.synced}>{server.ip || 'n/a'}</Await>
-          </Suspense>
+          {server.loading && !server.ip ? <TextSpinner /> : server.ip || 'n/a'}
         </li>
       ))}
     </ul>
   );
 };
 
-export default Contact;
+export default Status;

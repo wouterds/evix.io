@@ -4,7 +4,7 @@ const lookup = util.promisify(dns.lookup);
 
 type ServerInfo = {
   region: string;
-  ip: string;
+  ip: string | null;
   online: boolean;
   digitalOcean: boolean;
 };
@@ -13,19 +13,19 @@ export class Servers {
   private static _list: Record<string, ServerInfo> = {
     'raspberrypi.evix.io': {
       region: 'BE9000',
-      ip: 'n/a',
+      ip: null,
       online: false,
       digitalOcean: false,
     },
     'web1.evix.io': {
       region: 'AMS',
-      ip: 'n/a',
+      ip: null,
       online: false,
       digitalOcean: true,
     },
     'mail.evix.io': {
       region: 'AMS',
-      ip: 'n/a',
+      ip: null,
       online: false,
       digitalOcean: true,
     },
