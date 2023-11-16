@@ -19,11 +19,12 @@ jobs:
       REGISTRY_USER: ${{ github.actor }}
       REGISTRY_PASS: ${{ secrets.GITHUB_TOKEN }}
       IMAGE_NAME: ${{ github.repository }}
-      BUILD_VERSION: ${{ github.ref }}
       COMMIT_HASH: ${{ github.sha }}
-      BUILD_TIMESTAMP: $(date +%s)
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          echo "BUILD_TIMESTAMP=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+          echo "BUILD_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: docker/metadata-action@v4
         id: meta
         with:
@@ -44,8 +45,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
-            BUILD_VERSION=${{ env.BUILD_VERSION }}
             COMMIT_HASH=${{ env.COMMIT_HASH }}
+            BUILD_VERSION=${{ env.BUILD_VERSION }}
             BUILD_TIMESTAMP=${{ env.BUILD_TIMESTAMP }}
 
   deploy:
