@@ -24,6 +24,7 @@ type ServerInfo = {
 };
 
 export class Servers {
+  private static _DIGITALOCEAN_API_KEY: string | null = null;
   private static _list: Record<string, ServerInfo> = {
     'raspberrypi.evix.io': {
       region: 'BE9000',
@@ -44,6 +45,10 @@ export class Servers {
       digitalOcean: true,
     },
   };
+
+  public static set DIGITALOCEAN_API_KEY(value: string | null) {
+    this._DIGITALOCEAN_API_KEY = value;
+  }
 
   public static get list() {
     return Object.entries(this._list).map(([host, info]) => ({
@@ -79,7 +84,7 @@ export class Servers {
         `https://api.digitalocean.com/v2/droplets?name=${host}`,
         {
           headers: {
-            Authorization: `Bearer ${process.env.DIGITALOCEAN_API_KEY}`,
+            Authorization: `Bearer ${this._DIGITALOCEAN_API_KEY}`,
           },
         },
       );
