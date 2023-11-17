@@ -11,4 +11,3 @@ yarn-error.log
 /functions/version.txt
 /public/build
 .dev.vars
-.env
