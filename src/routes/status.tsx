@@ -1,7 +1,9 @@
 import { json, type MetaFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
+import { useEffect, useRef, useState } from 'react';
 
 import TextSpinner from '~/components/Spinner';
+import { Servers } from '~/services/servers.server';
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,13 +17,52 @@ export const meta: MetaFunction = () => {
 
 export const loader = async () => {
   return json({
-    servers: [],
+    servers: Servers.list,
   });
 };
 
 const Status = () => {
   const data = useLoaderData<typeof loader>();
-  const servers = data.servers as any[];
+  const [servers, setServers] = useState(
+    data.servers.map((server) => ({
+      ...server,
+      loading: true,
+    })),
+  );
+
+  const fetching = useRef(false);
+  useEffect(() => {
+    if (fetching.current) {
+      return;
+    }
+
+    fetching.current = true;
+
+    (async () => {
+      for (const { host } of data.servers) {
+        console.log('fetch', host);
+        const response = await fetch(`/status/${host}`);
+        const data: Object = await response.json();
+
+        setServers((servers) => {
+          const index = servers.findIndex((server) => server.host === host);
+          if (index === -1) {
+            return servers;
+          }
+
+          return [
+            ...servers.slice(0, index),
+            {
+              ...servers[index],
+              ...data,
+              loading: false,
+            },
+            ...servers.slice(index + 1),
+          ];
+        });
+      }
+    })();
+  }, [data.servers]);
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-between">
