@@ -5,10 +5,10 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "remix dev --manual -c \"npm run start\"",
+    "dev": "remix dev --manual -c \"yarn start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
     "build": "remix build",
-    "deploy": "npm run build && wrangler pages deploy ./public",
+    "deploy": "yarn build && wrangler pages deploy ./public",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix ./src",
     "typecheck": "tsc"
