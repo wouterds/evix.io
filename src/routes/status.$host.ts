@@ -1,4 +1,5 @@
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 
 import { Servers } from '~/services/servers.server';
 

@@ -70,7 +70,7 @@ export class Servers {
         },
       );
 
-      const data = await response.json();
+      const data: any = await response.json();
 
       const droplet = data.droplets[0];
       if (!droplet) {

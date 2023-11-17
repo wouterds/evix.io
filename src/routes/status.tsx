@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/node';
+import { json, type MetaFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -16,9 +16,9 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  return {
+  return json({
     servers: Servers.list,
-  };
+  });
 };
 
 const Status = () => {
@@ -42,7 +42,7 @@ const Status = () => {
       for (const { host } of data.servers) {
         console.log('fetch', host);
         const response = await fetch(`/status/${host}`);
-        const data = await response.json();
+        const data: Object = await response.json();
 
         setServers((servers) => {
           const index = servers.findIndex((server) => server.host === host);
