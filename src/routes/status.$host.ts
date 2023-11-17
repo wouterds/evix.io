@@ -8,7 +8,8 @@ export const loader = async ({ params, context }: LoaderFunctionArgs) => {
     return json({ error: 'Missing host' }, { status: 400 });
   }
 
-  Servers.DIGITALOCEAN_API_KEY = context.DIGITALOCEAN_API_KEY as string;
+  const env: Record<string, string> = (context as any).env;
+  Servers.DIGITALOCEAN_API_KEY = env.DIGITALOCEAN_API_KEY;
 
   const server = await Servers.update(params.host);
 
