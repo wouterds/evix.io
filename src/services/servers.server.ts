@@ -1,6 +1,16 @@
-import dns from 'dns';
-import util from 'util';
-const lookup = util.promisify(dns.lookup);
+const lookup = async (host: string) => {
+  const response = await fetch(`https://dns.google/resolve?name=${host}`);
+  if (response.status !== 200) {
+    return null;
+  }
+
+  const data: any = await response.json();
+  if (!Array.isArray(data?.Answer)) {
+    return null;
+  }
+
+  return data.Answer.find?.((a: any) => a.type === 1)?.data || null;
+};
 
 type ServerInfo = {
   region: string;
@@ -46,7 +56,7 @@ export class Servers {
 
     if (!server.digitalOcean) {
       try {
-        const { address } = await lookup(host);
+        const address = await lookup(host);
         server.ip = address || 'n/a';
 
         if (server.ip) {
