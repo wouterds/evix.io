@@ -1,5 +1,9 @@
 const lookup = async (host: string) => {
-  const response = await fetch(`https://dns.google/resolve?name=${host}`);
+  const response = await fetch(`https://1.1.1.1/dns-query?name=${host}`, {
+    headers: {
+      Accept: 'application/dns-json',
+    },
+  });
   if (response.status !== 200) {
     return null;
   }
