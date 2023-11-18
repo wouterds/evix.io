@@ -19,7 +19,7 @@ jobs:
           cache: 'yarn'
       - run: yarn --frozen-lockfile
       - run: yarn build
-      - run: zip -r build.zip ./public
+      - run: zip -r build.zip ./public ./functions
       - uses: actions/upload-artifact@v3
         with:
           name: build
@@ -44,3 +44,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: evix-io
           directory: ./public
+          workingDirectory: ./
