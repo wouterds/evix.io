@@ -40,7 +40,6 @@ const Status = () => {
 
     (async () => {
       for (const { host } of data.servers) {
-        console.log('fetch', host);
         const response = await fetch(`/status/${host}`);
         const data: Object = await response.json();
 
