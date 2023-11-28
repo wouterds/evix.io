@@ -6,13 +6,7 @@ import TextSpinner from '~/components/Spinner';
 import { Servers } from '~/services/servers.server';
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: 'Server status' },
-    {
-      name: 'description',
-      content: "Server status of Evix' services.",
-    },
-  ];
+  return [{ title: 'Server status' }];
 };
 
 export const loader = async () => {

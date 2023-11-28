@@ -1,14 +1,7 @@
 import type { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: 'Contact' },
-    {
-      name: 'description',
-      content:
-        "Questions? Want to discuss a project? Don't hesitate to contact us!",
-    },
-  ];
+  return [{ title: 'Contact' }];
 };
 
 const Contact = () => {

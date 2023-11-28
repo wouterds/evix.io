@@ -1,14 +1,7 @@
 import type { MetaFunction } from '@remix-run/cloudflare';
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: 'About' },
-    {
-      name: 'description',
-      content:
-        "Evix is a reliable development partner. Websites, web apps, mobile apps or APIs. It's what we do & what we love.",
-    },
-  ];
+  return [{ title: 'About' }];
 };
 
 const About = () => {
