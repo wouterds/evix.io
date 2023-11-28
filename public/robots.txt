@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-Disallow: /ping
-
-Sitemap: https://evix.io/sitemap.xml
