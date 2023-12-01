@@ -1133,20 +1133,20 @@
     picocolors "^1.0.0"
     tslib "^2.6.0"
 
-"@remix-run/cloudflare-pages@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/cloudflare-pages/-/cloudflare-pages-2.3.0.tgz#1dacf1ff4156f3e49936da1b9716fe064778d431"
-  integrity sha512-ojJ58Awa2Eu72oMpF+IVDBeWkcBn9VHeE5IBOFgnBtDXBgBXvID1OiDzTZuHEt+AxW1kZSvwrw8m95CdFJ0ZCg==
+"@remix-run/cloudflare-pages@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/cloudflare-pages/-/cloudflare-pages-2.3.1.tgz#dbd0c65b4896926fb3d77c52ca830079e6a93912"
+  integrity sha512-A+YxHIEWnaC/tsaNMSDoRBqOTMQG3T+nl1n8an7YARH85Wh1+igriuCLtl1hHS6TAUaVuGSCFxNw+1pjJp92VA==
   dependencies:
-    "@remix-run/cloudflare" "2.3.0"
+    "@remix-run/cloudflare" "2.3.1"
 
-"@remix-run/cloudflare@2.3.0", "@remix-run/cloudflare@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/cloudflare/-/cloudflare-2.3.0.tgz#80edc569a18073fa49df2803e129e3eeefa38f1b"
-  integrity sha512-yEQSJdIHMfgHJcIe+P5xRKbxszhJIRPM+kGScqnBPKrKL32xYYUlS2J8zx8sF3TQuRVqysJUCQ2aXYKBBYdRXQ==
+"@remix-run/cloudflare@2.3.1", "@remix-run/cloudflare@^2.2.0":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/cloudflare/-/cloudflare-2.3.1.tgz#86dc0df3697cc38c9ac130ea0722de2ad782f7c6"
+  integrity sha512-g4Y/JOpWt26vaH89N07LNG05AIkeeDSy1/BvfLUQBkrrZrwzPozSFEBObPZvNDhPzQlXmTCZZuYHXf7FcLh8GA==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.1.3"
-    "@remix-run/server-runtime" "2.3.0"
+    "@remix-run/server-runtime" "2.3.1"
 
 "@remix-run/css-bundle@^2.2.0":
   version "2.2.0"
@@ -1272,10 +1272,10 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.11.0.tgz#e0e45ac3fff9d8a126916f166809825537e9f955"
   integrity sha512-BHdhcWgeiudl91HvVa2wxqZjSHbheSgIiDvxrF1VjFzBzpTtuDPkOdOi3Iqvc08kXtFkLjhbS+ML9aM8mJS+wQ==
 
-"@remix-run/router@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.12.0.tgz#e89b64b6fa97a8a5b740a4c38c2904b80f1f229a"
-  integrity sha512-2hXv036Bux90e1GXTWSMfNzfDDK8LA8JYEWfyHxzvwdp6GyoWEovKc9cotb3KCKmkdwsIBuFGX7ScTWyiHv7Eg==
+"@remix-run/router@1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.13.0.tgz#7e29c4ee85176d9c08cb0f4456bff74d092c5065"
+  integrity sha512-5dMOnVnefRsl4uRnAdoWjtVTdh8e6aZqgM4puy9nmEADH72ck+uXwzpJLEKE9Q6F8ZljNewLgmTfkxUrBdv4WA==
 
 "@remix-run/serve@^2.2.0":
   version "2.2.0"
@@ -1303,12 +1303,12 @@
     set-cookie-parser "^2.4.8"
     source-map "^0.7.3"
 
-"@remix-run/server-runtime@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-2.3.0.tgz#e4d01529be5164dfc9339048238cf0a3820aafdf"
-  integrity sha512-9BiRK7VPm5nt/aOlRmeROXWA8HKgqjvQy+f9NNpqvf3jj62EUl0h4eUdyqRj6nNh44I+0XUBG7ZQ2xXTrGJATw==
+"@remix-run/server-runtime@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-2.3.1.tgz#442c56e56c4dd0d62830d9c62768e8430475dc44"
+  integrity sha512-ym1nfuYJKn5Vd4bqGIJbZMR1wh/A/qXSzOwqCrZxjdsAmb4YLUBnUAJFIoCRBrvcge92kXq/lXjGOFYf+qidZg==
   dependencies:
-    "@remix-run/router" "1.12.0"
+    "@remix-run/router" "1.13.0"
     "@types/cookie" "^0.5.3"
     "@web3-storage/multipart-parser" "^1.0.0"
     cookie "^0.5.0"
