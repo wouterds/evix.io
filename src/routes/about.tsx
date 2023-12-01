@@ -13,7 +13,7 @@ const About = () => {
         Evix is a reliable development partner.
         <br />
         Websites, web apps, mobile apps or APIs. It&apos;s what we do &amp; what
-        we love.
+        we love &lt;3.
       </p>
       <br />
       <p>
@@ -27,9 +27,9 @@ const About = () => {
         <br />
         Ingelandgat 37B
         <br />
-        9000 Gent
+        9000 Ghent
         <br />
-        België
+        Belgium
       </p>
     </>
   );
