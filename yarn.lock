@@ -1215,10 +1215,10 @@
     undici "^5.22.1"
     ws "^7.4.5"
 
-"@remix-run/eslint-config@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-2.2.0.tgz#4cc515c37b036a045abe703cb79c21405f0c0e33"
-  integrity sha512-H+LPiQhsXaCsOVvyB5vf6wTAv72m/pI6rdoCjyx3ayipNGAuqldkAnmFD6Qa/Bpc/zRHk13+PZV27kjyNd32vw==
+"@remix-run/eslint-config@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/eslint-config/-/eslint-config-2.4.1.tgz#e8ecf52e1a915637ae19ea73a1b3e9e58d42b902"
+  integrity sha512-kzl520uCcIi7OlqItzy/OSb3YVBklxeov8d39fFPbcSAmwO99l0PXmstQcRCQphAkGC7uRNl3LSJ9LpD3Gj2dQ==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/eslint-parser" "^7.21.8"
