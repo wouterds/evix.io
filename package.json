@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.2.0",
-    "@remix-run/cloudflare-pages": "^2.2.0",
+    "@remix-run/cloudflare-pages": "^2.4.1",
     "@remix-run/css-bundle": "^2.2.0",
     "@remix-run/node": "^2.2.0",
     "@remix-run/react": "^2.2.0",
