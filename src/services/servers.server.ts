@@ -1,48 +1,21 @@
-const lookup = async (host: string) => {
-  const response = await fetch(`https://1.1.1.1/dns-query?name=${host}`, {
-    headers: {
-      Accept: 'application/dns-json',
-    },
-  });
-  if (response.status !== 200) {
-    return null;
-  }
-
-  const data: any = await response.json();
-  if (!Array.isArray(data?.Answer)) {
-    return null;
-  }
-
-  return data.Answer.find?.((a: any) => a.type === 1)?.data || null;
-};
-
 type ServerInfo = {
   region: string;
   ip: string | null;
   online: boolean;
-  digitalOcean: boolean;
 };
 
 export class Servers {
   private static _DIGITALOCEAN_API_KEY: string | null = null;
   private static _list: Record<string, ServerInfo> = {
-    'raspberrypi.evix.io': {
-      region: 'BE9000',
-      ip: null,
-      online: false,
-      digitalOcean: false,
-    },
     'web1.evix.io': {
       region: 'AMS',
       ip: null,
       online: false,
-      digitalOcean: true,
     },
     'mail.evix.io': {
       region: 'AMS',
       ip: null,
       online: false,
-      digitalOcean: true,
     },
   };
 
@@ -61,22 +34,6 @@ export class Servers {
     const server = this._list[host];
     if (!server) {
       return null;
-    }
-
-    if (!server.digitalOcean) {
-      try {
-        const address = await lookup(host);
-        server.ip = address || 'n/a';
-
-        if (server.ip) {
-          const response = await fetch(`https://${host}`);
-          server.online = response.status === 200;
-        }
-
-        return server;
-      } catch {
-        return server;
-      }
     }
 
     try {
