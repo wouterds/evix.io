@@ -7,8 +7,8 @@
 
 ```
 # install dependencies
-yarn
+npm install
 
 # run dev server
-yarn dev
+npm run dev
 ```
